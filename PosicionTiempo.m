@@ -36,7 +36,7 @@ subplot(2, 1, 1);
 plot(t, smooth_z, 'b', 'LineWidth', 2);  % Utilizar los datos suavizados de posición
 xlabel('Tiempo (segundos)');
 ylabel('Posición (metros)');
-title('Gráfica de posición con respecto al tiempo (suavizado)');
+title('Gráfica de posición con respecto al tiempo');
 grid on;
 
 % Gráfica de velocidad con respecto al tiempo
@@ -44,5 +44,5 @@ subplot(2, 1, 2);
 plot(t, smooth_v, 'r', 'LineWidth', 2);  % Utilizar los datos suavizados de velocidad
 xlabel('Tiempo (segundos)');
 ylabel('Velocidad (m/s)');
-title('Gráfica de velocidad con respecto al tiempo (suavizado)');
+title('Gráfica de velocidad con respecto al tiempo');
 grid on;
