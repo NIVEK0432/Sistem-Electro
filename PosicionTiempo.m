@@ -26,19 +26,23 @@ for i = 1:length(t)-1
     z(i + 1) = z(i) + v_half * dt;           % Actualización de la posición en el siguiente paso (metros)
 end
 
+% Aplicar suavizado a la velocidad y posición descendentes
+smooth_v = smoothdata(v, 'lowess');
+smooth_z = smoothdata(flip(z), 'lowess');
+
 % Gráfica de posición con respecto al tiempo
 figure;
 subplot(2, 1, 1);
-plot(t, flip(z), 'b', 'LineWidth', 2);  % Invertir el orden de los valores de z para que sea descendente
+plot(t, smooth_z, 'b', 'LineWidth', 2);  % Utilizar los datos suavizados de posición
 xlabel('Tiempo (segundos)');
 ylabel('Posición (metros)');
-title('Gráfica de posición con respecto al tiempo');
+title('Gráfica de posición con respecto al tiempo (suavizado)');
 grid on;
 
 % Gráfica de velocidad con respecto al tiempo
 subplot(2, 1, 2);
-plot(t, v, 'r', 'LineWidth', 2);
+plot(t, smooth_v, 'r', 'LineWidth', 2);  % Utilizar los datos suavizados de velocidad
 xlabel('Tiempo (segundos)');
 ylabel('Velocidad (m/s)');
-title('Gráfica de velocidad con respecto al tiempo');
+title('Gráfica de velocidad con respecto al tiempo (suavizado)');
 grid on;
